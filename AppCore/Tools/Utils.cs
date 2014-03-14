@@ -8,6 +8,11 @@ namespace AppCore.Tools
 {
     internal static class Utils
     {
+        /// <summary>
+        /// This hash function is used in social network on client side.
+        /// </summary>
+        /// <param name="src">Hash value recieved from server</param>
+        /// <returns></returns>
         internal static String GetHash(string src)
         {
             var arr = new int[] { 4, 3, 5, 6, 1, 2, 8, 7, 2, 9, 3, 5, 7, 1, 4, 8, 8, 3, 4, 3, 1, 7, 3, 5, 9, 8, 1, 4, 3, 7, 2, 8 };
@@ -36,7 +41,7 @@ namespace AppCore.Tools
             return hash;
         }
 
-        internal static String getMd5Hash(String src)
+        internal static String GetMd5Hash(String src)
         {
             byte[] hashed;
             using(var hasher = System.Security.Cryptography.MD5.Create())

@@ -10,6 +10,7 @@ namespace musicDownloader
     public partial class Form1 : Form
     {
         AppCore.RequestsMonitor reqMonitor = AppCore.RequestsMonitor.Instance;
+
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace musicDownloader
             panel1.Visible = false;
         }
 
+        #region AppCoreEventHandlers
         void reqMonitor_LoadFriendsList(object sender, AppCore.EventArgs.FriendsListEventArgs args)
         {
             if (args.Status)
@@ -141,7 +143,7 @@ namespace musicDownloader
                 String message = ">>>An error occured,";
                 if (args.IsNetworkError)
                 {
-                    message +=  " please check your internet connection";
+                    message += " please check your internet connection";
                 }
                 if (args.IsAuthError)
                 {
@@ -151,6 +153,8 @@ namespace musicDownloader
                 panel2.Visible = false;
             }
         }
+        #endregion
+
         private void button1_Click(object sender, EventArgs e)
         {
             var login = loginIn.Text;
@@ -159,12 +163,6 @@ namespace musicDownloader
             {
                 reqMonitor.BeginCheckCredentials(login, pass);
             }
-        }
-
-        private void LoadTracksList()
-        {
-            textBox1.Text = ">>>Try to find your tracks...\r\n" + textBox1.Text;
-            reqMonitor.BeginLoadTracksList();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -203,7 +201,8 @@ namespace musicDownloader
 
         private void button3_Click(object sender, EventArgs e)
         {
-            LoadTracksList();
+            textBox1.Text = ">>>Try to find your tracks...\r\n" + textBox1.Text;
+            reqMonitor.BeginLoadTracksList();
         }
 
         private void button4_Click(object sender, EventArgs e)
