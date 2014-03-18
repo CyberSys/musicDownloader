@@ -110,6 +110,14 @@ namespace AppCore.Loaders
                 cookiesStr = cookies;
                 friendsBG.RunWorkerAsync();
             }
+            else
+            {
+                LoadFriendsList(this, new EventArgs.FriendsListEventArgs()
+                {
+                    Status = false,
+                    Friends = null
+                });
+            }
         }
 
         #region IDisposable

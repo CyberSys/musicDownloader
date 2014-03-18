@@ -157,12 +157,7 @@ namespace musicDownloader
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var login = loginIn.Text;
-            var pass = passIn.Text;
-            if (!String.IsNullOrEmpty(login) && !String.IsNullOrEmpty(pass))
-            {
-                reqMonitor.BeginCheckCredentials(login, pass);
-            }
+            reqMonitor.BeginCheckCredentials(loginIn.Text, passIn.Text);
         }
 
         private void button2_Click(object sender, EventArgs e)

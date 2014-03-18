@@ -130,7 +130,7 @@ namespace AppCore.Loaders
                     var indexOfMd5 = track.PlayStr.IndexOf("md5=") + 4;
                     var endOfMd5 = indexOfMd5 + 32;
                     var md5Hash = endOfMd5 == track.PlayStr.Length ? track.PlayStr.Substring(indexOfMd5) : track.PlayStr.Substring(indexOfMd5, endOfMd5);
-                    md5Hash = Utils.getMd5Hash(md5Hash + "secret");
+                    md5Hash = Utils.GetMd5Hash(md5Hash + "secret");
                     md5Hash = Utils.GetHash(md5Hash);
                     request = WebRequest.Create(track.PlayStr + "&clientHash=" + md5Hash) as HttpWebRequest;
                     request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36";

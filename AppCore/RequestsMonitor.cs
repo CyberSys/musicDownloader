@@ -10,7 +10,7 @@ namespace AppCore
 {
     /// <summary>
     /// Class which provides set of asynchronous methods for obtaining list of tracks, users, download tracks.
-    /// Implements Singleton pattern. For obtain
+    /// Implements Singleton pattern. For obtain the instance of this class use Instance property.
     /// </summary>
     public class RequestsMonitor : IDisposable
     {
@@ -132,6 +132,15 @@ namespace AppCore
             if (!String.IsNullOrEmpty(login) && !String.IsNullOrEmpty(pass))
             {
                 loginWorker.BeginCheckCredentials(login, pass);
+            }
+            else
+            {
+                LogIn(this, new LoginEventArgs()
+                {
+                    Status = false,
+                    IsAuthError = true,
+                    IsNetworkError = false
+                });
             }
         }
 
